@@ -3,27 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YouTube Barcode Generator</title>
+  <title>YT Barcode Generator</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body class="bg-gray-100">
-  <div class="container mx-auto mt-8">
-    <h1 class="text-3xl font-bold text-center mb-4">YouTube Barcode Generator</h1>
-    <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
+
+<section class="py-6 md:py-12 lg:py-16">
+  <div class="mx-auto max-w-xl px-4 md:px-6 text-center">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-4">
+      Barcode Generator for YouTube Videos
+    </h1>
+    <p class="text-gray-500 md:text-xl dark:text-gray-400">
+      Generate a barcode for your favorite youtube videos.
+    </p>
+
+    <div class="mt-8 bg-white p-6 rounded-lg shadow-lg">
       <form id="barcodeForm" class="space-y-4">
         <div>
-          <label for="youtubeUrl" class="block text-sm font-medium text-gray-700">YouTube Video URL:</label>
+          <label for="youtubeUrl" class="block text-sm font-medium text-gray-700"> Input a YouTube Video URL:</label>
           <input type="text" id="youtubeUrl" class="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:outline-none focus:border-indigo-500" required>
         </div>
-        <button type="submit" class="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 transition-colors w-full">Generate Barcode
-        </button>
+        <button type="submit" class="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 transition-colors w-full">Generate Barcode</button>
       </form>
       <div id="loadingIndicator" class="loader mt-4"></div>
       <div id="barcodeImageContainer" class="mt-4"></div>
       <button id="downloadButton" class="hidden mt-4 bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 transition-colors">Download Barcode</button>
     </div>
   </div>
-  
+  <br>
+  <footer class="text-center text-gray-500 text-sm mt-8">
+    Created by <a href="https://x.com/AyomiCoder" class="text-indigo-500 hover:underline">Ayomide Aluko ❤</a>
+    <br>
+    <a href="https://github.com/AyomiCoder" class="text-gray-500 hover:text-gray-700" target="_blank">
+      <i class="bi bi-github"></i> Follow me on GitHub 
+    </a>
+    <br>
+    <a href="https://twitter.com/intent/tweet?text=Are%20you%20a%20student%3F%F0%9F%8E%93%0ACheck%20out%20this%20awesome%20YouTube%20Barcode%20Generator%21%20%F0%9F%8E%A5Generate%20barcodes%20for%20your%20favorite%20YouTube%20videos%20and%20add%20them%20to%20your%20long essay%21%20%F0%9F%99%83%0A%0Ahttps%3A%2F%2Fgradvids.vercel.app" class="text-blue-500 hover:text-blue-700" target="_blank">
+      <i class="bi bi-twitter"></i> Share on Twitter
+    </a>
+  </footer>
+</section>
+
   <script>
     document.getElementById('barcodeForm').addEventListener('submit', async function(event) {
   event.preventDefault();
@@ -53,9 +74,11 @@
     
     barcodeImage.onload = function() {
       document.getElementById('barcodeImageContainer').innerHTML = `
-        <h3 class="text-lg font-semibold mb-2">Generated Barcode:</h3>
-        <img src="${barcodeImageUrl}" alt="Generated Barcode" class="max-w-full h-auto">
-      `;
+      <div class="flex flex-col items-center">
+      <h4 class="text-lg font-semibold mb-2">Here is the Barcode you generated:</h4>
+      <img src="${barcodeImageUrl}" alt="Generated Barcode" class="max-w-full h-auto">
+      </div>
+    `;
       
       // Show download button
       document.getElementById('downloadButton').classList.remove('hidden');
