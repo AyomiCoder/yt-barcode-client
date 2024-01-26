@@ -6,7 +6,7 @@ document.getElementById('barcodeForm').addEventListener('submit', async function
   const youtubeUrl = document.getElementById('youtubeUrl').value;
   
   try {
-    const response = await fetch('http://localhost:8080/generateBarcode', {
+    const response = await fetch('https://gradvids-api.vercel.app/generateBarcode', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
